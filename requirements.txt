@@ -15,4 +15,3 @@ datasets
 streamlit
 langchain-community
 langchain-openai
-smtplib
