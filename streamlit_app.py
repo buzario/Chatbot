@@ -6,7 +6,6 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
-from langdetect import detect
 import os
 from datetime import datetime
 
@@ -46,16 +45,10 @@ conversation_chain = ConversationalRetrievalChain.from_llm(
 
 # Define the function to handle the conversation
 def handle_conversation_with_details(query):
-    # Detect the language of the query
-    language = detect(query)
-    
-    if language != 'de':
-        return "Bitte stellen Sie Ihre Fragen auf Deutsch."
-    else:
-        detailed_query = f"Bitte geben Sie innerhalb von 6 Zeilen eine ausführliche Erklärung der folgenden Frage. Wenn das LLM die Antwort in den bereitgestellten Dokumenten nicht findet, soll es mit 'Informationen zu einer bestimmten Frage können nicht gefunden werden' antworten: {query}"
-        result = conversation_chain({"question": detailed_query})
-        answer = result["answer"]
-        return query, answer
+    detailed_query = f"Bitte geben Sie innerhalb von 6 Zeilen eine ausführliche Erklärung der folgenden Frage: {query}"
+    result = conversation_chain({"question": detailed_query})
+    answer = result["answer"]
+    return query, answer
 
 # Initialize the conversation history and unanswered questions list
 if "conversation_history" not in st.session_state:
