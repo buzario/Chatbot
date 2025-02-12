@@ -21,7 +21,7 @@ else:
 llm_model = "gpt-4o"
 
 # Load PDF document
-pdf_file_path = 'Biogas1_merged.pdf'  # Adjust the path accordingly
+pdf_file_path = 'Hamburg_Skript.pdf'  # Adjust the path accordingly
 loader = PyMuPDFLoader(file_path=pdf_file_path)
 data = loader.load()
 
