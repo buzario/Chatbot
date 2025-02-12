@@ -75,8 +75,8 @@ def save_unanswered_question(question):
         file.write(f"{timestamp} | {question}\n")
 
 # Streamlit UI
-st.title("BIOGASANLAGE CHATBOT")
-st.write("Stellen Sie Ihre Fragen zur Biogasproduktion auf Deutsch und erhalten Sie detaillierte Antworten.")
+st.title("CHATBOT")
+st.write("Stellen Sie Ihre Fragen zum Hamburg Water Cycle auf Deutsch und erhalten Sie detaillierte Antworten.")
 
 # Chat input
 query = st.chat_input("Ihre Frage:")
