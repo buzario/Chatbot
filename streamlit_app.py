@@ -30,8 +30,7 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 data = text_splitter.split_documents(data)
 
 # Create vector store with specific embedding model
-# embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 vectorstore = FAISS.from_documents(data, embedding=embeddings)
 
 # Create conversation chain
